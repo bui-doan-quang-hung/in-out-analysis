@@ -1,0 +1,7 @@
+﻿**/.git/
+**/__pycache__/
+**/*.py[cod]
+**/*.key
+**/*.crt
+**/*.log
+in-out-analysis/

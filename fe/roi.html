@@ -26,99 +26,13 @@
     <header class="topbar"><div class="crumb">Cơ quan / <b>Cấu hình ROI và xe ra vào</b></div><div class="top-actions"><button class="icon-button" aria-label="Thông báo">♧</button><div class="user"><div class="avatar">A</div><div class="user-name"><b>Admin</b><small>Quản trị viên</small></div></div></div></header>
     <div class="content">
       <div class="heading"><div><h1>Cấu hình ROI và xe ra vào</h1><p>Kéo khung trên ảnh camera để chọn vùng theo dõi phương tiện</p></div></div>
-      <section class="camera-grid">
-        <article class="camera-card" data-camera="in">
-          <div class="card-head"><div class="cam-title"><div class="cam-icon">↓</div><div><strong>Camera cổng vào</strong><small>IN-01 · Làn xe vào</small></div></div><span class="status">● Đang kết nối</span></div>
-          <div class="preview"><div class="skyline"></div><div class="road-line"></div><div class="osd">CAM 01 — GATE IN<br>1920 × 1080 · 25 FPS</div><div class="roi-label">ROI · BIỂN SỐ</div><div class="roi"></div><div class="car"></div></div>
-          <div class="camera-meta"><span>Độ phân giải <b>1920 × 1080</b></span><span>FPS <b>25</b></span><span>Độ trễ <b>120 ms</b></span><span>ROI <b>Đã cấu hình</b></span></div>
-          <div class="card-actions"><small>Kiểm tra lần cuối: 08:42:16 hôm nay</small><div class="action-group"><button class="small-btn roi-draw">＋ Vẽ lại ROI</button><button class="small-btn primary roi-save">Lưu ROI</button></div></div>
-        </article>
-        <article class="camera-card" data-camera="out">
-          <div class="card-head"><div class="cam-title"><div class="cam-icon">↑</div><div><strong>Camera cổng ra</strong><small>OUT-01 · Làn xe ra</small></div></div><span class="status">● Đang kết nối</span></div>
-          <div class="preview"><div class="skyline"></div><div class="road-line"></div><div class="osd">CAM 02 — GATE OUT<br>1920 × 1080 · 25 FPS</div><div class="roi-label">ROI · BIỂN SỐ</div><div class="roi"></div><div class="car" style="background:linear-gradient(#b0a587,#756b57)"></div></div>
-          <div class="camera-meta"><span>Độ phân giải <b>1920 × 1080</b></span><span>FPS <b>25</b></span><span>Độ trễ <b>98 ms</b></span><span>ROI <b>Đã cấu hình</b></span></div>
-          <div class="card-actions"><small>Kiểm tra lần cuối: 08:42:16 hôm nay</small><div class="action-group"><button class="small-btn roi-draw">＋ Vẽ lại ROI</button><button class="small-btn primary roi-save">Lưu ROI</button></div></div>
-        </article>
-      </section>
       <section class="config-card">
-        <div class="config-head"><div><h2>Cấu hình kết nối camera</h2><p>Chọn camera để chỉnh thông tin luồng và xử lý nhận diện</p></div><select class="select camera-select" style="width:220px"><option value="in">Camera cổng vào · IN-01</option><option value="out">Camera cổng ra · OUT-01</option></select></div>
-        <div class="config-content"><div class="config-grid">
-          <div class="field"><label>Tên camera</label><input class="input" id="camera-name" value="Camera cổng vào"></div>
-          <div class="field"><label>Mã camera</label><input class="input" id="camera-id" value="IN-01"></div>
-          <div class="field"><label>Địa chỉ luồng RTSP</label><input class="input masked" id="camera-rtsp" value="rtsp://••••••••••••••••/stream1"><div class="field-hint">Địa chỉ luồng video của camera tại cổng đã chọn</div></div>
-          <div class="field"><label>Vai trò / hướng di chuyển</label><select class="select" id="camera-direction"><option value="in">Cổng vào · Xe đi vào cơ quan</option><option value="out">Cổng ra · Xe đi ra khỏi cơ quan</option></select></div>
-          <div class="field"><label>Kích thước khung hình</label><select class="select"><option>1920 × 1080 (Full HD)</option><option>1280 × 720 (HD)</option><option>640 × 480</option></select></div>
-          <div class="field"><label>Tốc độ khung hình</label><select class="select"><option>25 FPS</option><option>30 FPS</option><option>15 FPS</option></select></div>
-          <div class="toggle-row"><div class="toggle-copy"><b>Bật nhận diện biển số</b><small>Tự động xử lý hình ảnh trong vùng ROI</small></div><span class="toggle"></span></div>
-          <div class="toggle-row"><div class="toggle-copy"><b>Lưu ảnh khi nhận diện</b><small>Lưu ảnh xe và biển số vào lịch sử</small></div><span class="toggle"></span></div>
-        </div></div>
-        <div class="config-footer"><small>Thay đổi cấu hình cần được lưu để có hiệu lực.</small><div class="footer-actions"><button class="btn">Kiểm tra kết nối</button><button class="btn primary" id="save-config">Lưu cấu hình</button></div></div>
+        <div class="config-head"><div><h2>Vùng nhận diện</h2><p>Chọn camera, kéo chuột trên ảnh để vẽ ROI rồi lưu.</p></div><select class="select camera-select" id="camera-select" style="width:240px"></select></div>
+        <div class="config-content"><div id="preview-message" role="status">Chọn camera để tải ảnh.</div><div id="roi-stage" style="position:relative;display:none;width:fit-content;max-width:100%;line-height:0;touch-action:none"><img id="camera-image" alt="Ảnh từ camera" style="display:block;max-width:100%;max-height:65vh"><div id="roi-box" style="position:absolute;border:2px dashed #60dfb0;background:#21a87733;pointer-events:none;display:none"></div></div></div>
+        <div class="config-footer"><small id="roi-message" role="status"></small><div class="footer-actions"><button class="btn" id="refresh-image">Làm mới ảnh</button><button class="btn primary" id="save-roi" disabled>Lưu ROI</button></div></div>
       </section>
     </div>
   </main>
-  <script>
-    const cameraData = {
-      in: {name:'Camera cổng vào', id:'IN-01', rtsp:'rtsp://••••••••••••••••/stream1'},
-      out: {name:'Camera cổng ra', id:'OUT-01', rtsp:'rtsp://••••••••••••••••/stream1'}
-    };
-    const selector = document.querySelector('.camera-select');
-    function selectCamera(id) {
-      const data = cameraData[id];
-      selector.value = id;
-      document.querySelector('#camera-name').value = data.name;
-      document.querySelector('#camera-id').value = data.id;
-      document.querySelector('#camera-rtsp').value = data.rtsp;
-      document.querySelector('#camera-direction').value = id;
-    }
-    selector.addEventListener('change', () => selectCamera(selector.value));
-    const requested = new URLSearchParams(location.search).get('camera');
-    if (cameraData[requested]) selectCamera(requested);
-    document.querySelector('#save-config').addEventListener('click', (event) => {
-      event.currentTarget.textContent = '✓ Đã lưu';
-      setTimeout(() => event.currentTarget.textContent = 'Lưu cấu hình', 1600);
-    });
-    document.querySelectorAll('.camera-card').forEach((card) => {
-      const preview = card.querySelector('.preview');
-      const roi = card.querySelector('.roi');
-      const drawButton = card.querySelector('.roi-draw');
-      const saveButton = card.querySelector('.roi-save');
-      let action = '';
-      let startX = 0, startY = 0, original = null;
-      const bounds = () => preview.getBoundingClientRect();
-      drawButton.addEventListener('click', () => {
-        action = action === 'draw' ? '' : 'draw';
-        drawButton.textContent = action ? 'Đang vẽ · Kéo trên ảnh' : '＋ Vẽ lại ROI';
-        roi.classList.toggle('drawing', !!action);
-      });
-      roi.addEventListener('pointerdown', (event) => {
-        const rect = roi.getBoundingClientRect();
-        const resizing = event.clientX > rect.right - 18 && event.clientY > rect.bottom - 18;
-        action = resizing ? 'resize' : 'move';
-        const area = bounds();
-        startX = event.clientX; startY = event.clientY;
-        original = {left: roi.offsetLeft, top: roi.offsetTop, width: roi.offsetWidth, height: roi.offsetHeight, area};
-        roi.setPointerCapture(event.pointerId);
-      });
-      preview.addEventListener('pointerdown', (event) => {
-        if (action !== 'draw' || event.target === roi) return;
-        const area = bounds();
-        const x = Math.max(0, Math.min(area.width, event.clientX - area.left));
-        const y = Math.max(0, Math.min(area.height, event.clientY - area.top));
-        original = {left:x, top:y, area}; startX=x; startY=y;
-        roi.style.left=`${x}px`; roi.style.top=`${y}px`; roi.style.right='auto'; roi.style.width='1px'; roi.style.height='1px';
-        preview.setPointerCapture(event.pointerId);
-      });
-      preview.addEventListener('pointermove', (event) => {
-        if (!original || !['draw','move','resize'].includes(action)) return;
-        const area=original.area;
-        if(action==='draw') { const x=Math.max(0,Math.min(area.width,event.clientX-area.left)); const y=Math.max(0,Math.min(area.height,event.clientY-area.top)); roi.style.left=`${Math.min(startX,x)}px`; roi.style.top=`${Math.min(startY,y)}px`; roi.style.width=`${Math.abs(x-startX)}px`; roi.style.height=`${Math.abs(y-startY)}px`; }
-        else if(action==='move') { roi.style.left=`${Math.max(0,Math.min(area.width-original.width,original.left+event.clientX-startX))}px`; roi.style.top=`${Math.max(0,Math.min(area.height-original.height,original.top+event.clientY-startY))}px`; }
-        else { roi.style.width=`${Math.max(40,Math.min(area.width-original.left,original.width+event.clientX-startX))}px`; roi.style.height=`${Math.max(35,Math.min(area.height-original.top,original.height+event.clientY-startY))}px`; }
-      });
-      const end=()=>{original=null;if(action!=='draw')action='';};
-      preview.addEventListener('pointerup',end); preview.addEventListener('pointercancel',end);
-      saveButton.addEventListener('click',()=>{action='';drawButton.textContent='＋ Vẽ lại ROI';roi.classList.remove('drawing');saveButton.textContent='✓ Đã lưu';setTimeout(()=>saveButton.textContent='Lưu ROI',1600);});
-    });
-  </script>
+  <script src="roi.js"></script>
 </body>
 </html>

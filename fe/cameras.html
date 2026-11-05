@@ -27,26 +27,22 @@
     <header class="topbar"><div class="crumb">Cơ quan / <b>Quản lý camera</b></div><div class="top-actions"><button class="icon-button" aria-label="Thông báo">♧</button><div class="user"><div class="avatar">A</div><div class="user-name"><b>Admin</b><small>Quản trị viên</small></div></div></div></header>
     <div class="content">
       <div class="heading"><div><h1>Quản lý camera</h1><p>Cấu hình kết nối luồng video và vùng nhận diện tại các cổng</p></div><button class="btn primary">＋ &nbsp;Thêm camera</button></div>
-      <section class="summary">
-        <div class="summary-card"><div><span>Tổng camera</span><b>2</b></div><div class="summary-icon">◉</div></div>
-        <div class="summary-card"><div><span>Đang kết nối</span><b style="color:#15976a">2</b></div><div class="summary-icon" style="background:#e9f8f1;color:#17a673">✓</div></div>
-        <div class="summary-card"><div><span>Đang nhận diện</span><b>2</b></div><div class="summary-icon" style="background:#f4edff;color:#8b62d5">⌖</div></div>
-      </section>
       <section class="camera-list">
-        <div class="list-head"><div><h2>Danh sách camera</h2><p>Chọn camera để xem trước và chỉnh vùng nhận diện</p></div><div class="list-actions"><button class="btn">⌕ &nbsp;Tìm camera</button><button class="btn primary">＋ &nbsp;Thêm camera</button></div></div>
-        <div class="list-wrap"><table class="camera-table"><thead><tr><th>Camera</th><th>Cổng / hướng</th><th>Địa chỉ RTSP</th><th>Độ phân giải</th><th>Trạng thái</th><th>Vùng ROI</th><th></th></tr></thead><tbody>
-          <tr class="camera-row selected" data-camera="in"><td><div class="camera-name"><div class="cam-icon">↓</div><div><b>Camera cổng vào</b><small>IN-01 · Cập nhật 08:42 hôm nay</small></div></div></td><td>Cổng vào · Xe vào</td><td><span class="rtsp-mask">rtsp://••••••••/stream1</span></td><td>1920 × 1080 · 25 FPS</td><td><span class="status online">● Đang kết nối</span></td><td><span class="status online">Đã thiết lập</span></td><td><button class="list-select" aria-label="Chọn camera vào">›</button></td></tr>
-          <tr class="camera-row" data-camera="out"><td><div class="camera-name"><div class="cam-icon">↑</div><div><b>Camera cổng ra</b><small>OUT-01 · Cập nhật 08:42 hôm nay</small></div></div></td><td>Cổng ra · Xe ra</td><td><span class="rtsp-mask">rtsp://••••••••/stream1</span></td><td>1920 × 1080 · 25 FPS</td><td><span class="status online">● Đang kết nối</span></td><td><span class="status online">Đã thiết lập</span></td><td><button class="list-select" aria-label="Chọn camera ra">›</button></td></tr>
-        </tbody></table></div>
+        <div class="list-head"><div><h2>Danh s?ch camera</h2><p>Th?m camera v? ki?m tra k?t n?i RTSP</p></div><input class="input" id="search" placeholder="T?m theo t?n ho?c m?" style="max-width:240px"></div>
+        <div class="list-wrap"><table class="camera-table"><thead><tr><th>Camera</th><th>H??ng</th><th>Tr?ng th?i</th><th>Ki?m tra k?t n?i</th><th>Thao t?c</th></tr></thead><tbody id="camera-list"></tbody></table></div>
       </section>
-      <section class="camera-list">
-        <div class="list-head"><div><h2>Danh sách camera</h2><p>Hai camera đang được gán cho cổng vào và cổng ra</p></div><div class="list-actions"><button class="btn">⌕ &nbsp;Tìm camera</button><button class="btn primary" onclick="location.href='roi.html'">⌖ &nbsp;Cấu hình ROI</button></div></div>
-        <div class="list-wrap"><table class="camera-table"><thead><tr><th>Camera</th><th>Cổng / hướng</th><th>Địa chỉ RTSP</th><th>Độ phân giải</th><th>Trạng thái</th><th>Vùng ROI</th><th></th></tr></thead><tbody>
-          <tr class="camera-row" onclick="location.href='roi.html?camera=in'"><td><div class="camera-name"><div class="cam-icon">↓</div><div><b>Camera cổng vào</b><small>IN-01 · Cập nhật 08:42 hôm nay</small></div></div></td><td>Cổng vào · Xe vào</td><td><span class="rtsp-mask">rtsp://••••••••/stream1</span></td><td>1920 × 1080 · 25 FPS</td><td><span class="status online">● Đang kết nối</span></td><td><span class="status online">Đã thiết lập</span></td><td><button class="list-select">›</button></td></tr>
-          <tr class="camera-row" onclick="location.href='roi.html?camera=out'"><td><div class="camera-name"><div class="cam-icon">↑</div><div><b>Camera cổng ra</b><small>OUT-01 · Cập nhật 08:42 hôm nay</small></div></div></td><td>Cổng ra · Xe ra</td><td><span class="rtsp-mask">rtsp://••••••••/stream1</span></td><td>1920 × 1080 · 25 FPS</td><td><span class="status online">● Đang kết nối</span></td><td><span class="status online">Đã thiết lập</span></td><td><button class="list-select">›</button></td></tr>
-        </tbody></table></div>
+      <section class="config-card" id="editor">
+        <div class="config-head"><div><h2 id="form-title">Th?m camera</h2><p>??a ch? RTSP ???c l?u tr?n m?y ch? v? kh?ng hi?n th? l?i sau khi l?u.</p></div></div>
+        <form id="camera-form"><div class="config-content"><div class="config-grid">
+          <div class="field"><label for="name">T?n camera</label><input class="input" id="name" required maxlength="120"></div>
+          <div class="field"><label for="code">M? camera</label><input class="input" id="code" required maxlength="80"></div>
+          <div class="field"><label for="rtsp">??a ch? RTSP</label><input class="input" id="rtsp" type="password" placeholder="rtsp://..." autocomplete="off"><div class="field-hint">?? tr?ng khi ch?nh s?a n?u kh?ng ??i ??a ch?.</div></div>
+          <div class="field"><label for="direction">H??ng</label><select class="select" id="direction"><option value="in">Xe v?o</option><option value="out">Xe ra</option></select></div>
+          <div class="field"><label><input type="checkbox" id="enabled" checked> ?ang s? d?ng</label></div>
+        </div></div><div class="config-footer"><small id="message" role="status"></small><div class="footer-actions"><button class="btn" type="button" id="cancel">Nh?p m?i</button><button class="btn primary" type="submit">L?u camera</button></div></div></form>
       </section>
     </div>
   </main>
+<script src="cameras.js"></script>
 </body>
 </html>

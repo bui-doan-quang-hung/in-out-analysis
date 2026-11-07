@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GateView — Thống kê ra vào</title>
+  <link rel="stylesheet" href="statistics.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span class="brand-icon">◉</span> GateView</a>
+    <div class="nav-label">TỔNG QUAN</div>
+    <a class="nav-item" href="index.html"><span>▦</span> Giám sát trực tiếp</a>
+    <a class="nav-item" href="history.html"><span>↕</span> Lịch sử ra / vào</a>
+    <a class="nav-item active" href="statistics.html"><span>▥</span> Thống kê ra vào</a>
+    <div class="nav-label">CẤU HÌNH</div>
+    <a class="nav-item" href="cameras.html"><span>◉</span> Quản lý camera</a>
+    <a class="nav-item" href="roi.html"><span>⌖</span> Cấu hình ROI và xe ra vào</a>
+    <div class="side-bottom">● &nbsp; GateView AI</div>
+  </aside>
+  <main>
+    <header class="topbar">Cơ quan / <strong>Thống kê ra vào</strong><span>GateView AI</span></header>
+    <div class="content">
+      <div class="page-heading"><div><h1>Thống kê ra vào</h1><p>Theo dõi lưu lượng và chất lượng nhận diện theo thời gian</p></div></div>
+      <form id="filters" class="panel filters">
+        <div class="quick" aria-label="Khoảng thời gian nhanh"><button type="button" data-range="today">Hôm nay</button><button type="button" data-range="7">7 ngày</button><button type="button" data-range="30" class="selected">30 ngày</button><button type="button" data-range="month">Tháng này</button><button type="button" data-range="previous">Tháng trước</button></div>
+        <div class="fields"><label>Từ ngày<input required type="date" id="start"></label><label>Đến ngày<input required type="date" id="end"></label><label>Camera<select id="camera"><option value="all">Tất cả camera</option></select></label><label>Hướng<select id="direction"><option value="all">Tất cả hướng</option><option value="in">Xe vào</option><option value="out">Xe ra</option></select></label><button class="primary" type="submit">Áp dụng</button></div>
+      </form>
+      <div id="message" role="status" class="message">Đang tải dữ liệu…</div>
+      <section class="cards" id="summary"></section>
+      <section class="panel averages"><div class="section-title"><div><h2>Trung bình lượt ghi nhận</h2><p>Vào / ra trong khoảng thời gian đã chọn</p></div></div><div id="averages" class="average-grid"></div><p class="footnote">Ngày không có sự kiện vẫn được tính. Tuần và tháng tính theo số kỳ lịch có giao với khoảng chọn; các kỳ chưa đầy đủ vẫn được tính một kỳ.</p></section>
+      <section class="panel"><div class="section-title"><div><h2>Xu hướng lưu lượng</h2><p>Lượt ghi nhận theo thời gian</p></div><div class="segmented" id="granularity"><button data-grain="day" class="selected">Ngày</button><button data-grain="week">Tuần</button><button data-grain="month">Tháng</button></div></div><div class="legend"><span class="in-dot">●</span> Xe vào <span class="out-dot">●</span> Xe ra</div><div id="trend" class="chart"></div></section>
+      <div class="columns"><section class="panel"><div class="section-title"><div><h2>Theo giờ trong ngày</h2><p>Tổng lượt trong khoảng đã chọn</p></div></div><div id="hours" class="chart"></div></section><section class="panel"><div class="section-title"><div><h2>Theo thứ trong tuần</h2><p>Tổng lượt trong khoảng đã chọn</p></div></div><div id="weekdays" class="chart"></div></section></div>
+      <div class="columns"><section class="panel"><div class="section-title"><div><h2>Lưu lượng theo camera</h2><p>Các camera có sự kiện trong khoảng chọn</p></div></div><div class="table-wrap"><table><thead><tr><th>Camera</th><th>Hướng</th><th>Lượt ghi nhận</th></tr></thead><tbody id="camera-rows"></tbody></table></div></section><section class="panel"><div class="section-title"><div><h2>Chất lượng nhận diện</h2><p>Độ tin cậy do model trả về</p></div></div><div id="quality" class="quality"></div></section></div>
+      <p class="disclaimer">Số liệu dựa trên sự kiện nhận diện, có thể sai lệch do đọc sai hoặc ghi trùng biển số. Số xe trong cơ quan và thời gian lưu lại cần ghép lượt vào–ra nên chưa hiển thị.</p>
+    </div>
+  </main>
+  <script src="statistics.js"></script>
+</body>
+</html>

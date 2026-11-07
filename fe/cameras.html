@@ -18,6 +18,7 @@
     <div class="nav-label">Tổng quan</div>
     <a class="nav-item" href="index.html"><span class="ico">▦</span><span>Giám sát trực tiếp</span></a>
     <a class="nav-item" href="history.html"><span class="ico">↕</span><span>Lịch sử ra / vào</span></a>
+    <a class="nav-item" href="statistics.html"><span class="ico">&#9637;</span><span>Th&#7889;ng k&#234; ra v&#224;o</span></a>
     <div class="nav-label" style="margin-top:20px">Cấu hình</div>
     <a class="nav-item active" href="cameras.html"><span class="ico">◉</span><span>Quản lý camera</span></a>
     <a class="nav-item" href="roi.html"><span class="ico">⌖</span><span>Cấu hình ROI và xe ra vào</span></a>
@@ -26,23 +27,23 @@
   <main class="main">
     <header class="topbar"><div class="crumb">Cơ quan / <b>Quản lý camera</b></div><div class="top-actions"><button class="icon-button" aria-label="Thông báo">♧</button><div class="user"><div class="avatar">A</div><div class="user-name"><b>Admin</b><small>Quản trị viên</small></div></div></div></header>
     <div class="content">
-      <div class="heading"><div><h1>Quản lý camera</h1><p>Cấu hình kết nối luồng video và vùng nhận diện tại các cổng</p></div><button class="btn primary">＋ &nbsp;Thêm camera</button></div>
+      <div class="heading"><div><h1>Quản lý camera</h1><p>Cấu hình kết nối luồng video và vùng nhận diện tại các cổng</p></div><button class="btn primary" id="add-camera" type="button">＋ &nbsp;Thêm camera</button></div>
       <section class="camera-list">
-        <div class="list-head"><div><h2>Danh s?ch camera</h2><p>Th?m camera v? ki?m tra k?t n?i RTSP</p></div><input class="input" id="search" placeholder="T?m theo t?n ho?c m?" style="max-width:240px"></div>
-        <div class="list-wrap"><table class="camera-table"><thead><tr><th>Camera</th><th>H??ng</th><th>Tr?ng th?i</th><th>Ki?m tra k?t n?i</th><th>Thao t?c</th></tr></thead><tbody id="camera-list"></tbody></table></div>
+        <div class="list-head"><div><h2>Danh sách camera</h2><p>Thêm camera và kiểm tra kết nối RTSP</p></div><input class="input" id="search" placeholder="Tìm theo tên hoặc mã" style="max-width:240px"></div>
+        <div class="list-wrap"><table class="camera-table"><thead><tr><th>Camera</th><th>Địa chỉ RTSP</th><th>Hướng</th><th>Trạng thái</th><th>Kiểm tra kết nối</th><th>Thao tác</th></tr></thead><tbody id="camera-list"></tbody></table></div>
       </section>
       <section class="config-card" id="editor">
-        <div class="config-head"><div><h2 id="form-title">Th?m camera</h2><p>??a ch? RTSP ???c l?u tr?n m?y ch? v? kh?ng hi?n th? l?i sau khi l?u.</p></div></div>
+        <div class="config-head"><div><h2 id="form-title">Thêm camera</h2><p>Địa chỉ RTSP được lưu trên máy chủ và hiển thị khi chỉnh sửa.</p></div></div>
         <form id="camera-form"><div class="config-content"><div class="config-grid">
-          <div class="field"><label for="name">T?n camera</label><input class="input" id="name" required maxlength="120"></div>
-          <div class="field"><label for="code">M? camera</label><input class="input" id="code" required maxlength="80"></div>
-          <div class="field"><label for="rtsp">??a ch? RTSP</label><input class="input" id="rtsp" type="password" placeholder="rtsp://..." autocomplete="off"><div class="field-hint">?? tr?ng khi ch?nh s?a n?u kh?ng ??i ??a ch?.</div></div>
-          <div class="field"><label for="direction">H??ng</label><select class="select" id="direction"><option value="in">Xe v?o</option><option value="out">Xe ra</option></select></div>
-          <div class="field"><label><input type="checkbox" id="enabled" checked> ?ang s? d?ng</label></div>
-        </div></div><div class="config-footer"><small id="message" role="status"></small><div class="footer-actions"><button class="btn" type="button" id="cancel">Nh?p m?i</button><button class="btn primary" type="submit">L?u camera</button></div></div></form>
+          <div class="field"><label for="name">Tên camera</label><input class="input" id="name" required maxlength="120"></div>
+          <div class="field"><label for="code">Mã camera</label><input class="input" id="code" required maxlength="80"></div>
+          <div class="field"><label for="rtsp">Địa chỉ RTSP</label><input class="input" id="rtsp" type="text" placeholder="rtsp://..." autocomplete="off"><div class="field-hint">Để trống khi chỉnh sửa nếu không đổi địa chỉ.</div></div>
+          <div class="field"><label for="direction">Hướng</label><select class="select" id="direction"><option value="in">Xe vào</option><option value="out">Xe ra</option></select></div>
+          <div class="field"><label><input type="checkbox" id="enabled" checked> Đang sử dụng</label></div>
+        </div></div><div class="config-footer"><small id="message" role="status"></small><div class="footer-actions"><button class="btn" type="button" id="cancel">Nhập mới</button><button class="btn primary" type="submit">Lưu camera</button></div></div></form>
       </section>
     </div>
   </main>
-<script src="cameras.js"></script>
+<script src="cameras.js?v=2"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@
     .latest-card{margin:0 12px 12px;border:1px solid #e8ebf1;border-radius:8px;background:#fbfcfe;overflow:hidden}.latest-heading{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid #edf0f4}.latest-heading strong{font-size:11px;color:#3b475d}.latest-heading small{font-size:10px;color:#98a1af}.latest-body{padding:12px;display:flex;gap:14px;align-items:center}.latest-photo{height:178px;width:56%;flex:none;border-radius:7px;overflow:hidden;position:relative;background:linear-gradient(180deg,#c6d1d2 0 34%,#65747b 35% 56%,#323d44 57%)}.latest-photo:before{content:"";position:absolute;width:72%;height:49%;left:14%;bottom:10%;border-radius:20px 21px 7px 7px;background:linear-gradient(#e7e8e2,#a9b0ac);box-shadow:0 5px 8px #17212a70}.latest-photo:after{content:"";position:absolute;width:20%;height:12%;left:40%;bottom:21%;border:1px solid #bbb;background:#f3f2e8;border-radius:1px}.capture-badge{position:absolute;z-index:1;left:8px;top:8px;background:#111a2ccc;color:#fff;padding:4px 6px;border-radius:3px;font:9px Consolas,monospace}.latest-photo.exit-photo{background:linear-gradient(180deg,#d0d0c2 0 34%,#777c72 35% 56%,#363c3a 57%)}.latest-photo.exit-photo:before{background:linear-gradient(#aebdc2,#6d7d84)}.latest-info{min-width:0;flex:1}.latest-plate{font-size:20px;font-weight:800;letter-spacing:1px;color:#202d42;line-height:1.2}.latest-meta{display:flex;align-items:center;gap:7px;margin-top:8px;color:#788397;font-size:11px}.latest-meta .tag{font-size:9px;padding:3px 6px}.latest-bottom{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-top:10px;color:#8b95a6;font-size:10px}.latest-bottom b{color:#438c71;font-weight:650}.latest-bottom a{color:#4d78df;text-decoration:none}
     @media(max-width:900px){.latest-photo{height:155px;width:52%}}
     @media(max-width:480px){.latest-body{align-items:flex-start;flex-direction:column}.latest-photo{height:170px;width:100%}.latest-info{width:100%}}
+    .ai-controls{display:flex;align-items:center;gap:10px;margin-left:auto;margin-right:14px}.ai-status{font-size:12px;color:#8993a4}.ai-status.online{color:#15976a}.ai-button{border:1px solid #b8c9fa;border-radius:8px;background:#f5f8ff;color:#416dda;padding:8px 12px;font-weight:600}.ai-button:disabled{opacity:.55;cursor:wait}@media(max-width:720px){.heading{flex-wrap:wrap}.ai-controls{margin-left:0}.ai-status{font-size:11px}}
   </style>
 </head>
 <body>
@@ -21,7 +22,8 @@
       <div class="nav-label">Tổng quan</div>
       <a class="nav-item active" href="index.html"><span class="ico">▦</span><span>Giám sát trực tiếp</span></a>
       <a class="nav-item" href="history.html"><span class="ico">↕</span><span>Lịch sử ra / vào</span></a>
-      <div class="nav-label" style="margin-top:20px">Cấu hình</div>
+      <a class="nav-item" href="statistics.html"><span class="ico">&#9637;</span><span>Th&#7889;ng k&#234; ra v&#224;o</span></a>
+    <div class="nav-label" style="margin-top:20px">Cấu hình</div>
       <a class="nav-item" href="cameras.html"><span class="ico">◉</span><span>Quản lý camera</span></a>
       <a class="nav-item" href="roi.html"><span class="ico">⌖</span><span>Cấu hình ROI và xe ra vào</span></a>
       <div class="side-bottom"><div class="site-status"><span class="dot"></span>Hệ thống đang hoạt động</div>Phiên bản 1.0.0</div>
@@ -63,5 +65,6 @@
       </div>
     </main>
   </div>
+<script src="dashboard.js?v=11"></script>
 </body>
 </html>

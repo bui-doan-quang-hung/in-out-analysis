@@ -17,6 +17,7 @@
     <div class="nav-label">Tổng quan</div>
     <a class="nav-item" href="index.html"><span class="ico">▦</span><span>Giám sát trực tiếp</span></a>
     <a class="nav-item" href="history.html"><span class="ico">↕</span><span>Lịch sử ra / vào</span></a>
+    <a class="nav-item" href="statistics.html"><span class="ico">&#9637;</span><span>Th&#7889;ng k&#234; ra v&#224;o</span></a>
     <div class="nav-label" style="margin-top:20px">Cấu hình</div>
     <a class="nav-item" href="cameras.html"><span class="ico">◉</span><span>Quản lý camera</span></a>
     <a class="nav-item active" href="roi.html"><span class="ico">⌖</span><span>Cấu hình ROI và xe ra vào</span></a>
@@ -27,12 +28,12 @@
     <div class="content">
       <div class="heading"><div><h1>Cấu hình ROI và xe ra vào</h1><p>Kéo khung trên ảnh camera để chọn vùng theo dõi phương tiện</p></div></div>
       <section class="config-card">
-        <div class="config-head"><div><h2>Vùng nhận diện</h2><p>Chọn camera, kéo chuột trên ảnh để vẽ ROI rồi lưu.</p></div><select class="select camera-select" id="camera-select" style="width:240px"></select></div>
-        <div class="config-content"><div id="preview-message" role="status">Chọn camera để tải ảnh.</div><div id="roi-stage" style="position:relative;display:none;width:fit-content;max-width:100%;line-height:0;touch-action:none"><img id="camera-image" alt="Ảnh từ camera" style="display:block;max-width:100%;max-height:65vh"><div id="roi-box" style="position:absolute;border:2px dashed #60dfb0;background:#21a87733;pointer-events:none;display:none"></div></div></div>
-        <div class="config-footer"><small id="roi-message" role="status"></small><div class="footer-actions"><button class="btn" id="refresh-image">Làm mới ảnh</button><button class="btn primary" id="save-roi" disabled>Lưu ROI</button></div></div>
+        <div class="config-head"><div><h2>Vùng nhận diện</h2><p>Kéo trên ảnh để vẽ; kéo bên trong khung để di chuyển hoặc kéo góc dưới phải để đổi kích thước.</p></div><select class="select camera-select" id="camera-select" aria-label="Chọn camera" style="width:240px"></select></div>
+        <div class="config-content"><div id="preview-message" role="status">Chọn camera để tải ảnh.</div><div id="roi-stage" style="position:relative;display:none;width:fit-content;max-width:100%;line-height:0;touch-action:none;cursor:crosshair;margin-top:12px;user-select:none"><img id="camera-image" alt="Ảnh từ camera" draggable="false" style="display:block;max-width:100%;max-height:65vh"><div id="roi-box" style="position:absolute;border:2px dashed #60dfb0;background:#21a87733;cursor:move;display:none"><span id="roi-handle" aria-hidden="true" style="position:absolute;right:-7px;bottom:-7px;width:16px;height:16px;border:2px solid white;border-radius:3px;background:#21a877;cursor:nwse-resize"></span></div></div></div>
+        <div class="config-footer" style="position:sticky;bottom:0;background:#fff;z-index:4;gap:12px;flex-wrap:wrap"><strong id="roi-message" role="status" style="color:#116e4d;font-size:13px"></strong><div class="footer-actions" style="flex-wrap:wrap"><button class="btn" id="refresh-image">Làm mới ảnh</button><button class="btn" id="draw-roi" disabled>Vẽ ROI mới</button><button class="btn" id="reset-roi" disabled>Hoàn tác</button><button class="btn primary" id="save-roi" disabled>Lưu ROI</button></div></div>
       </section>
     </div>
   </main>
-  <script src="roi.js"></script>
+  <script src="roi.js?v=4"></script>
 </body>
 </html>
